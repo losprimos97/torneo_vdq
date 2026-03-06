@@ -1,0 +1,46 @@
+body{
+font-family: Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+display:flex;
+align-items:center;
+background:#222;
+color:white;
+padding:10px;
+}
+
+.logo img{
+height:60px;
+margin-right:20px;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:20px;
+}
+
+table{
+border-collapse: collapse;
+width:80%;
+margin-top:20px;
+}
+
+table, th, td{
+border:1px solid black;
+padding:8px;
+text-align:center;
+}
