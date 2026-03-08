@@ -3,83 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos</title>
+    <title>Torneo VDQ</title>
     <style>
+        /* Reset y configuración base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Para que al navegar se deslice suavemente */
         }
 
         body {
-            background-color: #050a18;
+            background-color: #050a18; /* Azul muy oscuro de fondo */
+            color: white;
         }
 
+        /* --- ESTILOS DEL ENCABEZADO --- */
         header {
             display: flex;
             align-items: center;
-            padding: 20px 50px;
+            padding: 15px 50px;
             background-color: #050a18;
-            color: white;
-            /* Esto asegura que el contenido ocupe todo el ancho */
-            justify-content: space-between; 
+            position: sticky; /* Se queda fijo arriba al bajar */
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Contenedor del Logo (Izquierda) */
         .logo {
-            flex: 0 1 auto; /* No crece, se ajusta a su contenido */
+            flex: 0 1 auto;
         }
 
         .logo img {
-            height: 45px;
+            height: 50px; /* Ajusta según el tamaño de tu logo.png */
             display: block;
         }
 
-        /* Navegación (Centrada) */
         nav {
-            flex: 1; /* Toma el espacio restante para permitir el centrado */
+            flex: 1;
             display: flex;
-            justify-content: center; /* Centra el contenido de la nav */
-            margin-right: 100px; /* Compensación visual para que el centro sea real respecto a la pantalla, no al espacio sobrante */
+            justify-content: center;
+            margin-right: 100px; /* Equilibra visualmente el espacio del logo */
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
+            padding: 8px 15px;
             transition: 0.3s;
         }
 
-        /* Estilo del botón activo (Equipos) */
+        /* Clase para el botón resaltado (Equipos) */
         nav ul li a.active {
             background-color: #1a253d;
-            padding: 8px 20px;
-            border-radius: 6px;
-            color: #f1c40f; /* El amarillo de la imagen */
+            color: #f1c40f; 
+            border-radius: 4px;
         }
 
         nav ul li a:hover:not(.active) {
             color: #f1c40f;
         }
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px;
-            }
-            nav {
-                margin-right: 0;
-            }
+        /* --- CONTENIDO PRINCIPAL --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilo para el título EQUIPOS */
+        .main-title {
+            text-align: center;
+            font-size: 42px; /* Tamaño grande como en la imagen */
+            font-weight: 500;
+            margin-top: 40px;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -87,18 +98,27 @@
 
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="LP">
         </div>
 
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Torneo</a></li>
-                <li><a href="#" class="active">Equipos</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#torneo">Torneo</a></li>
+                <li><a href="#equipos" class="active">Equipos</a></li>
             </ul>
         </nav>
-
     </header>
+
+    <main class="container">
+        
+        <section id="equipos">
+            <h1 class="main-title">EQUIPOS</h1>
+            
+            <p style="text-align: center; color: #666;">(Aquí aparecerán las tarjetas de los equipos)</p>
+        </section>
+
+    </main>
 
 </body>
 </html>
