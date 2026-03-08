@@ -79,3 +79,38 @@ onValue(listaPartidos, (snapshot) => {
             .catch((error) => console.error("Error:", error));
     });
 }
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
+const db = getDatabase();
+
+function verEquipo(nombreEquipo) {
+    const modal = document.getElementById("modalJugadores");
+    const tabla = document.getElementById("tablaJugadoresCuerpo");
+    document.getElementById("nombreEquipoModal").innerText = nombreEquipo;
+    
+    // Limpiar tabla antes de cargar
+    tabla.innerHTML = "";
+
+    // Consultar jugadores de ese equipo en Firebase
+    const jugadoresRef = ref(db, `equipos/${nombreEquipo}/jugadores`);
+    onValue(jugadoresRef, (snapshot) => {
+        const jugadores = snapshot.val();
+        if (jugadores) {
+            Object.values(jugadores).forEach(j => {
+                tabla.innerHTML += `
+                    <tr>
+                        <td>${j.numero}</td>
+                        <td><img src="${j.foto}" width="40"></td>
+                        <td>${j.nombre}</td>
+                        <td>${j.edad}</td>
+                    </tr>`;
+            });
+        }
+    });
+
+    modal.style.display = "block";
+}
+
+function cerrarModal() {
+    document.getElementById("modalJugadores").style.display = "none";
+}
