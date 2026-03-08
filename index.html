@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Campeonato Los Primos</title>
 
 <style>
 
+/* ===== GENERAL ===== */
+
 body{
 margin:0;
 font-family:Arial;
-background:#071f3a;
-color:white;
+background:#8fd3f4;
+color:#111;
 }
 
-/* MENU SUPERIOR */
+/* ===== HEADER ===== */
 
 header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#0b2a4a;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 40px;
-background:#05142a;
-position:fixed;
-width:100%;
-top:0;
+box-sizing:border-box;
+z-index:1000;
+}
+
+.logo{
+color:white;
+font-weight:bold;
+font-size:20px;
 }
 
 .menu a{
 color:white;
-margin-left:20px;
+margin-left:25px;
 text-decoration:none;
 font-weight:bold;
 cursor:pointer;
@@ -41,14 +51,17 @@ cursor:pointer;
 color:#ffd000;
 }
 
-/* CONTENIDO */
+/* ===== CONTENIDO ===== */
 
 .contenido{
 margin-top:90px;
 padding:30px;
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
 }
 
-/* SECCIONES */
+/* ===== SECCIONES ===== */
 
 .seccion{
 display:none;
@@ -58,27 +71,57 @@ display:none;
 display:block;
 }
 
-/* TARJETAS EQUIPOS */
+/* ===== TABLAS ===== */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+background:white;
+}
+
+th{
+background:#0b2a4a;
+color:white;
+padding:8px;
+}
+
+td{
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+}
+
+/* ===== EQUIPOS ===== */
 
 .contenedor-equipos{
 display:flex;
-gap:25px;
 flex-wrap:wrap;
+gap:25px;
+margin-top:20px;
 }
 
 .equipo{
-background:#1c3d6e;
+background:white;
 padding:20px;
 border-radius:10px;
-width:250px;
+width:260px;
 cursor:pointer;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+text-align:center;
+transition:0.3s;
 }
 
 .equipo:hover{
-background:#2c5aa0;
+transform:scale(1.05);
 }
 
-/* MODAL JUGADORES */
+.equipo img{
+width:70px;
+margin-bottom:10px;
+}
+
+/* ===== MODAL ===== */
 
 .modal{
 display:none;
@@ -92,8 +135,8 @@ background:rgba(0,0,0,0.7);
 
 .modal-contenido{
 background:white;
-color:black;
 width:500px;
+max-width:90%;
 margin:80px auto;
 padding:20px;
 border-radius:10px;
@@ -103,27 +146,15 @@ overflow:auto;
 
 .cerrar{
 float:right;
-cursor:pointer;
 font-size:20px;
+cursor:pointer;
 }
 
-/* TABLAS */
+/* ===== JUGADORES ===== */
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-th{
-background:#2c5aa0;
-padding:8px;
-}
-
-td{
-border:1px solid #ccc;
-padding:8px;
-text-align:center;
+.jugador-foto{
+width:40px;
+border-radius:6px;
 }
 
 </style>
@@ -134,38 +165,44 @@ text-align:center;
 
 <header>
 
-<h2>Campeonato</h2>
+<div class="logo">
+⚽ Campeonato Los Primos
+</div>
 
 <div class="menu">
-
-<a onclick="mostrar('inicio')">Inicio</a> <a onclick="mostrar('torneo')">Torneo</a> <a onclick="mostrar('equipos')">Equipos</a>
-
+<a onclick="mostrar('inicio')">Inicio</a>
+<a onclick="mostrar('torneo')">Torneo</a>
+<a onclick="mostrar('equipos')">Equipos</a>
 </div>
 
 </header>
 
 <div class="contenido">
 
-<!-- INICIO -->
+<!-- ================= INICIO ================= -->
 
 <div id="inicio" class="seccion activa">
 
 <h1>Bienvenidos al Campeonato</h1>
 
 <p>
-Campeonato relámpago organizado por el
-Club Social y Deportivo Los Primos.
+Campeonato relámpago organizado por el 
+<strong>Club Social y Deportivo Los Primos</strong>.
+</p>
+
+<p>
+"Insistimos, Persistimos, Somos Primos y con Pasión Vivimos"
 </p>
 
 <h2>Reglamento</h2>
 
 <a href="reglamento.pdf" target="_blank">
-Ver reglamento en PDF
+📄 Ver reglamento en PDF
 </a>
 
 </div>
 
-<!-- TORNEO -->
+<!-- ================= TORNEO ================= -->
 
 <div id="torneo" class="seccion">
 
@@ -223,20 +260,22 @@ Ver reglamento en PDF
 
 </div>
 
-<!-- EQUIPOS -->
+<!-- ================= EQUIPOS ================= -->
 
 <div id="equipos" class="seccion">
 
-<h1>EQUIPOS</h1>
+<h1>Equipos</h1>
 
 <div class="contenedor-equipos">
 
-<div class="equipo" onclick="abrirEquipo()">
+<div class="equipo" onclick="abrirEquipo('equipo1')">
 
-<h3>Los Sobrinos de Cesar Quinteros</h3>
+<img src="img/equipos/equipo1.png">
+
+<h3>Los Sobrinos</h3>
 
 <p>
-Abreviatura: SSQ<br>
+Abrev: SSQ<br>
 Dirigente: Patricio Haro
 </p>
 
@@ -248,13 +287,13 @@ Dirigente: Patricio Haro
 
 </div>
 
-<!-- MODAL JUGADORES -->
+<!-- ================= MODAL EQUIPO ================= -->
 
-<div id="modal" class="modal">
+<div id="equipo1" class="modal">
 
 <div class="modal-contenido">
 
-<span class="cerrar" onclick="cerrarEquipo()">X</span>
+<span class="cerrar" onclick="cerrarEquipo('equipo1')">X</span>
 
 <h2>Jugadores</h2>
 
@@ -268,17 +307,24 @@ Dirigente: Patricio Haro
 </tr>
 
 <tr>
-<td>Foto</td>
+<td><img class="jugador-foto" src="img/jugadores/j1.jpg"></td>
 <td>Marlon Yajamin</td>
 <td>22</td>
 <td>25</td>
 </tr>
 
 <tr>
-<td>Foto</td>
+<td><img class="jugador-foto" src="img/jugadores/j2.jpg"></td>
 <td>Jonathan Lucumi</td>
 <td>28</td>
 <td>9</td>
+</tr>
+
+<tr>
+<td><img class="jugador-foto" src="img/jugadores/j3.jpg"></td>
+<td>Nixon Cali</td>
+<td>24</td>
+<td>7</td>
 </tr>
 
 </table>
@@ -288,6 +334,8 @@ Dirigente: Patricio Haro
 </div>
 
 <script>
+
+/* CAMBIAR SECCION */
 
 function mostrar(seccion){
 
@@ -299,12 +347,16 @@ document.getElementById(seccion).classList.add("activa")
 
 }
 
-function abrirEquipo(){
-document.getElementById("modal").style.display="block"
+/* ABRIR MODAL EQUIPO */
+
+function abrirEquipo(id){
+document.getElementById(id).style.display="block"
 }
 
-function cerrarEquipo(){
-document.getElementById("modal").style.display="none"
+/* CERRAR MODAL */
+
+function cerrarEquipo(id){
+document.getElementById(id).style.display="none"
 }
 
 </script>
