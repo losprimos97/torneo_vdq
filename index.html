@@ -1,76 +1,313 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Campeonato de Fútbol</title>
-<link rel="stylesheet" href="style.css">
+<title>Campeonato Los Primos</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#071f3a;
+color:white;
+}
+
+/* MENU SUPERIOR */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#05142a;
+position:fixed;
+width:100%;
+top:0;
+}
+
+.menu a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+.menu a:hover{
+color:#ffd000;
+}
+
+/* CONTENIDO */
+
+.contenido{
+margin-top:90px;
+padding:30px;
+}
+
+/* SECCIONES */
+
+.seccion{
+display:none;
+}
+
+.activa{
+display:block;
+}
+
+/* TARJETAS EQUIPOS */
+
+.contenedor-equipos{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.equipo{
+background:#1c3d6e;
+padding:20px;
+border-radius:10px;
+width:250px;
+cursor:pointer;
+}
+
+.equipo:hover{
+background:#2c5aa0;
+}
+
+/* MODAL JUGADORES */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.modal-contenido{
+background:white;
+color:black;
+width:500px;
+margin:80px auto;
+padding:20px;
+border-radius:10px;
+max-height:80%;
+overflow:auto;
+}
+
+.cerrar{
+float:right;
+cursor:pointer;
+font-size:20px;
+}
+
+/* TABLAS */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:#2c5aa0;
+padding:8px;
+}
+
+td{
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
 
-<div class="logo">
-<img src="img/logo.png" alt="Logo torneo">
-</div>
+<h2>Campeonato</h2>
 
-<nav>
-<ul>
-<li><a href="index.html">Inicio</a></li>
-<li><a href="torneo.html">Torneo</a></li>
-<li><a href="equipos.html">Equipos</a></li>
-</ul>
-</nav>
+<div class="menu">
+
+<a onclick="mostrar('inicio')">Inicio</a> <a onclick="mostrar('torneo')">Torneo</a> <a onclick="mostrar('equipos')">Equipos</a>
+
+</div>
 
 </header>
 
-<section>
+<div class="contenido">
+
+<!-- INICIO -->
+
+<div id="inicio" class="seccion activa">
 
 <h1>Bienvenidos al Campeonato</h1>
 
 <p>
-Bienvenidos al campeonato de fútbol. Aquí podrás ver los resultados,
-estadísticas, posiciones y equipos participantes.
+Campeonato relámpago organizado por el
+Club Social y Deportivo Los Primos.
 </p>
 
-<h2>Reglamento del Campeonato</h2>
+<h2>Reglamento</h2>
 
-<p>
-Puedes ver el reglamento completo aquí:
-</p>
-
-<a href="PCB.pdf" target="_blank">
-Ver Reglamento en PDF
+<a href="reglamento.pdf" target="_blank">
+Ver reglamento en PDF
 </a>
 
-<h2>Horarios de Partidos</h2>
+</div>
+
+<!-- TORNEO -->
+
+<div id="torneo" class="seccion">
+
+<h1>Tabla de Posiciones</h1>
 
 <table>
 
 <tr>
-<th>Fecha</th>
+<th>Pos</th>
 <th>Equipo</th>
-<th>Equipo</th>
-<th>Hora</th>
+<th>PJ</th>
+<th>PG</th>
+<th>PE</th>
+<th>PP</th>
+<th>GF</th>
+<th>GC</th>
+<th>DG</th>
+<th>Pts</th>
 </tr>
 
 <tr>
-<td>20 Julio</td>
+<td>1</td>
 <td>Equipo A</td>
-<td>Equipo B</td>
-<td>14:00</td>
-</tr>
-
-<tr>
-<td>20 Julio</td>
-<td>Equipo C</td>
-<td>Equipo D</td>
-<td>15:00</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>7</td>
 </tr>
 
 </table>
 
-</section>
+<h1>Goleadores</h1>
+
+<table>
+
+<tr>
+<th>#</th>
+<th>Jugador</th>
+<th>Equipo</th>
+<th>Goles</th>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Juan Perez</td>
+<td>Equipo A</td>
+<td>5</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- EQUIPOS -->
+
+<div id="equipos" class="seccion">
+
+<h1>EQUIPOS</h1>
+
+<div class="contenedor-equipos">
+
+<div class="equipo" onclick="abrirEquipo()">
+
+<h3>Los Sobrinos de Cesar Quinteros</h3>
+
+<p>
+Abreviatura: SSQ<br>
+Dirigente: Patricio Haro
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL JUGADORES -->
+
+<div id="modal" class="modal">
+
+<div class="modal-contenido">
+
+<span class="cerrar" onclick="cerrarEquipo()">X</span>
+
+<h2>Jugadores</h2>
+
+<table>
+
+<tr>
+<th>Foto</th>
+<th>Nombre</th>
+<th>Edad</th>
+<th>Número</th>
+</tr>
+
+<tr>
+<td>Foto</td>
+<td>Marlon Yajamin</td>
+<td>22</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>Foto</td>
+<td>Jonathan Lucumi</td>
+<td>28</td>
+<td>9</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function mostrar(seccion){
+
+document.querySelectorAll(".seccion").forEach(s=>{
+s.classList.remove("activa")
+})
+
+document.getElementById(seccion).classList.add("activa")
+
+}
+
+function abrirEquipo(){
+document.getElementById("modal").style.display="block"
+}
+
+function cerrarEquipo(){
+document.getElementById("modal").style.display="none"
+}
+
+</script>
 
 </body>
 </html>
