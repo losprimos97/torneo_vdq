@@ -26,3 +26,28 @@
         </table>
     </div>
 </div>
+<div class="equipos-grid">
+    <div class="equipo-item" onclick="verEquipo('Equipo A')">
+        <img src="logo_equipo_a.png" class="logo-equipo">
+        <p>Equipo A</p>
+    </div>
+</div>
+
+<div id="modalJugadores" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2 id="nombreEquipoModal">Nombre del Equipo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tbody id="tablaJugadoresCuerpo">
+                </tbody>
+        </table>
+    </div>
+</div>
