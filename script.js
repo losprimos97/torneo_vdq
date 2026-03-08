@@ -64,7 +64,16 @@ if (document.getElementById('btnGuardar')) {
             gVisita: parseInt(document.getElementById('golesVisita').value),
             fecha: new Date().toLocaleDateString()
         };
-
+// Función para leer partidos y activar la tabla (Para torneo.html)
+const listaPartidos = ref(db, 'partidos');
+onValue(listaPartidos, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+        // Aquí llamas a la función que calcula los puntos 
+        // que te pasé en la respuesta anterior
+        actualizarTabla(data); 
+    }
+});
         push(ref(db, 'partidos'), partido)
             .then(() => alert("Resultado guardado con éxito"))
             .catch((error) => console.error("Error:", error));
