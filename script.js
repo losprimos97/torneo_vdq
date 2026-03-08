@@ -50,3 +50,23 @@ function actualizarTabla(partidos) {
 
     renderizarTabla(tabla);
 }
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
+const db = getDatabase();
+
+// Función para guardar el resultado (Solo para la página admin.html)
+if (document.getElementById('btnGuardar')) {
+    document.getElementById('btnGuardar').addEventListener('click', () => {
+        const partido = {
+            local: document.getElementById('eqLocal').value,
+            gLocal: parseInt(document.getElementById('golesLocal').value),
+            visita: document.getElementById('eqVisita').value,
+            gVisita: parseInt(document.getElementById('golesVisita').value),
+            fecha: new Date().toLocaleDateString()
+        };
+
+        push(ref(db, 'partidos'), partido)
+            .then(() => alert("Resultado guardado con éxito"))
+            .catch((error) => console.error("Error:", error));
+    });
+}
