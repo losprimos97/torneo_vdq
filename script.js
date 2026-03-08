@@ -109,6 +109,40 @@ function verEquipo(nombreEquipo) {
     });
 
     modal.style.display = "block";
+  // Función para abrir el modal y cargar jugadores
+window.verEquipo = function(nombreEquipo) {
+    const modal = document.getElementById("modalJugadores");
+    document.getElementById("modal-titulo-equipo").innerText = nombreEquipo;
+    
+    const tabla = document.getElementById("tabla-jugadores-cuerpo");
+    tabla.innerHTML = "<tr><td colspan='4'>Cargando jugadores...</td></tr>";
+
+    // Referencia a los jugadores de ese equipo en Firebase
+    const jugadoresRef = ref(db, 'equipos/' + nombreEquipo + '/jugadores');
+    onValue(jugadoresRef, (snapshot) => {
+        const data = snapshot.val();
+        tabla.innerHTML = ""; // Limpiar
+        if (data) {
+            Object.values(data).forEach(j => {
+                tabla.innerHTML += `
+                    <tr>
+                        <td>${j.numero}</td>
+                        <td><img src="${j.foto}" width="50" style="border-radius:50%"></td>
+                        <td>${j.nombre}</td>
+                        <td>${j.edad} años</td>
+                    </tr>`;
+            });
+        } else {
+            tabla.innerHTML = "<tr><td colspan='4'>No hay jugadores registrados.</td></tr>";
+        }
+    });
+
+    modal.style.display = "block";
+}
+
+window.cerrarModal = function() {
+    document.getElementById("modalJugadores").style.display = "none";
+}
 }
 
 function cerrarModal() {
