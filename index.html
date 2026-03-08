@@ -3,70 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encabezado FEUPS</title>
+    <title>Inicio</title>
     <style>
-        /* Reset de estilos básicos */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: #050a18; /* Color oscuro del fondo de la imagen */
+            background-color: #050a18;
         }
 
-        /* Estilos del Header */
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 15px 50px;
+            padding: 20px 50px;
             background-color: #050a18;
             color: white;
+            /* Esto asegura que el contenido ocupe todo el ancho */
+            justify-content: space-between; 
         }
 
-        /* Contenedor del Logo */
+        /* Contenedor del Logo (Izquierda) */
+        .logo {
+            flex: 0 1 auto; /* No crece, se ajusta a su contenido */
+        }
+
         .logo img {
-            height: 50px; /* Ajusta según el tamaño de tu imagen real */
+            height: 45px;
             display: block;
         }
 
-        /* Navegación Central */
+        /* Navegación (Centrada) */
+        nav {
+            flex: 1; /* Toma el espacio restante para permitir el centrado */
+            display: flex;
+            justify-content: center; /* Centra el contenido de la nav */
+            margin-right: 100px; /* Compensación visual para que el centro sea real respecto a la pantalla, no al espacio sobrante */
+        }
+
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            font-size: 14px;
+            color: #ffffff;
+            font-size: 15px;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
-        /* Estilo para el botón activo/seleccionado */
+        /* Estilo del botón activo (Equipos) */
         nav ul li a.active {
-            background-color: #1e2a44; /* Fondo sutil para resaltar */
-            padding: 8px 16px;
-            border-radius: 5px;
-            color: #f1c40f; /* Color amarillento similar al de la captura */
+            background-color: #1a253d;
+            padding: 8px 20px;
+            border-radius: 6px;
+            color: #f1c40f; /* El amarillo de la imagen */
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover:not(.active) {
             color: #f1c40f;
         }
 
-        /* Responsividad básica */
+        /* Responsivo */
         @media (max-width: 768px) {
             header {
-                padding: 15px 20px;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
             }
             nav {
-                display: none; /* Ocultar en móviles o implementar menú hamburguesa */
+                margin-right: 0;
             }
         }
     </style>
