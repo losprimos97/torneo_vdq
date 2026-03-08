@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Equipos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Torneo</a></li>
+                <li><a href="#">Equipos</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <h1>EQUIPOS</h1>
+        <button id="btnAgregar">Agregar Equipo</button>
+        
+        <div id="contenedorEquipos">
+            <p>Cargando equipos...</p>
+        </div>
+    </main>
+
+    <div id="modalEquipo" class="modal">
+        <div class="modal-content">
+            <h2>Agregar Equipo</h2>
+            <input type="text" placeholder="Nombre del Equipo">
+            <input type="text" placeholder="Abreviatura">
+            <input type="file" accept="image/*">
+            <button>Guardar Equipo</button>
+            <button class="cerrar">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
