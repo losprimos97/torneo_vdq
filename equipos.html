@@ -9,3 +9,20 @@
         </nav>
     </div>
 </header>
+<div class="equipo-card" onclick="abrirModal('equipo1')">
+    <img src="logo-equipo.png">
+    <p>Nombre del Equipo</p>
+</div>
+
+<div id="modal-equipo" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <table id="tabla-jugadores">
+            <thead>
+                <tr><th>#</th><th>Foto</th><th>Nombre</th><th>Edad</th></tr>
+            </thead>
+            <tbody id="lista-jugadores">
+                </tbody>
+        </table>
+    </div>
+</div>
