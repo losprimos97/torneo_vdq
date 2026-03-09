@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torneo VDQ - Torneo</title>
     <style>
-        /* Reset y configuración base */
+        /* --- ESTILOS GENERALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -60,7 +60,7 @@
             border-radius: 6px;
         }
 
-        /* --- ESTILOS DEL ACORDEÓN --- */
+        /* --- CONTENEDOR PRINCIPAL --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -75,7 +75,7 @@
             letter-spacing: 2px;
         }
 
-        /* Botón de la lista desplegable */
+        /* --- ESTILOS DEL ACORDEÓN --- */
         .accordion {
             background-color: #2563eb;
             color: white;
@@ -84,10 +84,8 @@
             width: 100%;
             border: none;
             text-align: left;
-            outline: none;
             font-size: 16px;
             font-weight: bold;
-            transition: 0.4s;
             border-radius: 8px;
             margin-bottom: 5px;
             display: flex;
@@ -95,11 +93,8 @@
             gap: 15px;
         }
 
-        .accordion:hover, .active-acc {
-            background-color: #1d4ed8;
-        }
+        .accordion:hover, .active-acc { background-color: #1d4ed8; }
 
-        /* Panel que se despliega */
         .panel {
             padding: 0 15px;
             background-color: #0d1b3e;
@@ -110,11 +105,8 @@
             margin-bottom: 15px;
         }
 
-        /* --- ESTILOS DE TABLA --- */
-        .table-container {
-            overflow-x: auto;
-            padding: 15px 0;
-        }
+        /* --- ESTILOS DE TABLAS --- */
+        .table-container { overflow-x: auto; padding: 15px 0; }
 
         table {
             width: 100%;
@@ -126,8 +118,14 @@
             background-color: #1e3a8a;
             color: #60a5fa;
             padding: 12px;
-            text-align: center;
             border: 1px solid #1a253d;
+        }
+
+        /* Encabezado azul brillante para Goleadores/Sancionados */
+        .tabla-stats th {
+            background-color: #2563eb;
+            color: white;
+            border: none;
         }
 
         td {
@@ -136,22 +134,26 @@
             border-bottom: 1px solid #1a253d;
         }
 
-        .team-info {
+        .player-cell {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-align: left;
         }
 
-        .team-logo-mini {
-            width: 25px;
-            height: 25px;
-            object-fit: contain;
+        .img-mini {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
-        /* Responsividad para móviles */
-        @media (max-width: 992px) {
-            header { padding: 20px; flex-direction: column; gap: 15px; }
+        .card-yellow { color: #ffeb3b; font-size: 18px; }
+        .card-red { color: #f44336; font-size: 18px; }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 20px; gap: 15px; }
             nav { margin-right: 0; }
         }
     </style>
@@ -159,9 +161,7 @@
 <body>
 
     <header>
-        <div class="logo">
-            <img src="img/logo.png" alt="LP">
-        </div>
+        <div class="logo"><img src="img/logo.png" alt="LP"></div>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -195,25 +195,13 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>
-                                <div class="team-info">
-                                    <img src="img/equipos/equipo1.png" class="team-logo-mini">
-                                    Los Sobrinos de Sesar Quinteros
-                                </div>
+                            <td class="player-cell">
+                                <img src="img/equipos/equipo1.png" class="img-mini"> 
+                                Los Sobrinos de Sesar Quinteros
                             </td>
                             <td>5</td><td>4</td><td>1</td><td>0</td><td>14</td><td>5</td><td>13</td><td>9</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <div class="team-info">
-                                    <img src="img/equipos/equipo2.png" class="team-logo-mini">
-                                    Corinthians Engineering FC
-                                </div>
-                            </td>
-                            <td>5</td><td>3</td><td>1</td><td>1</td><td>27</td><td>12</td><td>10</td><td>15</td>
-                        </tr>
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </div>
@@ -221,42 +209,67 @@
         <button class="accordion">⚽ Goleadores</button>
         <div class="panel">
             <div class="table-container">
-                <table>
+                <table class="tabla-stats">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>#</th>
+                            <th>Jugador</th>
                             <th>Equipo</th>
                             <th>Goles</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Marlon Yajamin</td>
-                            <td>Los Sobrinos</td>
-                            <td>8</td>
+                            <td>1</td>
+                            <td class="player-cell">
+                                <img src="img/jugadores/dilan.png" class="img-mini"> 
+                                Dilan Condor
+                            </td>
+                            <td>Corinthians Engineering FC</td>
+                            <td><strong>38</strong></td>
                         </tr>
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </div>
 
         <button class="accordion">🫱 Sancionados</button>
         <div class="panel">
-            <p style="padding: 20px; text-align: center; color: #aaa;">No hay sanciones registradas en esta fecha.</p>
+            <div class="table-container">
+                <table class="tabla-stats">
+                    <thead>
+                        <tr>
+                            <th>Jugador</th>
+                            <th>Equipo</th>
+                            <th><span class="card-yellow">■</span></th>
+                            <th><span class="card-red">■</span></th>
+                            <th>Motivo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="player-cell">
+                                <img src="img/jugadores/marlon.png" class="img-mini"> 
+                                Marlon Yajamin
+                            </td>
+                            <td>Los Sobrinos de Sesar Quinteros</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td style="font-style: italic; color: #94a3b8;">Pendiente pago</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
         </div>
 
     </main>
 
     <script>
-        // Lógica para abrir y cerrar las listas (acordeón)
+        // Lógica para abrir/cerrar el acordeón
         const acc = document.getElementsByClassName("accordion");
-        
         for (let i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
-                /* Alternar clase para cambiar color del botón al estar activo */
                 this.classList.toggle("active-acc");
-
-                /* Mostrar/ocultar el panel */
                 const panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
@@ -266,6 +279,5 @@
             });
         }
     </script>
-
 </body>
 </html>
