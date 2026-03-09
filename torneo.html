@@ -105,51 +105,13 @@
             margin-bottom: 15px;
         }
 
-        /* --- ESTILOS DE TABLAS --- */
-        .table-container { overflow-x: auto; padding: 15px 0; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #1e3a8a;
-            color: #60a5fa;
-            padding: 12px;
-            border: 1px solid #1a253d;
-        }
-
-        /* Encabezado azul brillante para Goleadores/Sancionados */
-        .tabla-stats th {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-        }
-
-        td {
-            padding: 12px;
+        /* Mensaje de vacío */
+        .empty-message {
+            padding: 20px;
             text-align: center;
-            border-bottom: 1px solid #1a253d;
+            color: #94a3b8;
+            font-style: italic;
         }
-
-        .player-cell {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-align: left;
-        }
-
-        .img-mini {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .card-yellow { color: #ffeb3b; font-size: 18px; }
-        .card-red { color: #f44336; font-size: 18px; }
 
         /* --- RESPONSIVIDAD --- */
         @media (max-width: 768px) {
@@ -176,135 +138,17 @@
 
         <button class="accordion">🏆 Posiciones</button>
         <div class="panel">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Equipo</th>
-                            <th>PJ</th>
-                            <th>PG</th>
-                            <th>PE</th>
-                            <th>PP</th>
-                            <th>GF</th>
-                            <th>GC</th>
-                            <th>GD</th>
-                            <th>Puntos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr>
-                            <td>1</td>
-                            <td class="player-cell">
-                                <img src="img/equipos/equipo.png" class="img-mini"> 
-                                Equipo 1
-                            </td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="player-cell">
-                                <img src="img/equipos/equipo.png" class="img-mini"> 
-                                Equipo 2
-                            </td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="player-cell">
-                                <img src="img/equipos/equipo.png" class="img-mini"> 
-                                Equipo 3
-                            </td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="player-cell">
-                                <img src="img/equipos/equipo.png" class="img-mini"> 
-                                Equipo 4
-                            </td>
-                            <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                        </tr>
-
-                        </tbody>
-                </table>
-            </div>
+            <p class="empty-message">Aún no se han registrado equipos</p>
         </div>
 
         <button class="accordion">⚽ Goleadores</button>
         <div class="panel">
-            <div class="table-container">
-                <table class="tabla-stats">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Jugador</th>
-                            <th>Equipo</th>
-                            <th>Goles</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="player-cell">
-                                <img src="img/jugadores/j1.png" class="img-mini"> 
-                                Jugador 1
-                            </td>
-                            <td>Equipo 1</td>
-                            <td><strong>10</strong></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="player-cell">
-                                <img src="img/jugadores/j2.png" class="img-mini"> 
-                                Jugador 2
-                            </td>
-                            <td>Equipo 2</td>
-                            <td><strong>5</strong></td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
+            <p class="empty-message">No hay registros</p>
         </div>
 
         <button class="accordion">🫱 Sancionados</button>
         <div class="panel">
-            <div class="table-container">
-                <table class="tabla-stats">
-                    <thead>
-                        <tr>
-                            <th>Jugador</th>
-                            <th>Equipo</th>
-                            <th><span class="card-yellow">■</span></th>
-                            <th><span class="card-red">■</span></th>
-                            <th>Observación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="player-cell">
-                                <img src="img/jugadores/j1.png" class="img-mini"> 
-                                Jugador 1
-                            </td>
-                            <td>Equipo 1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td style="font-style: italic; color: #94a3b8;">Sin Valor Pendiente</td>
-                        </tr>
-                        <tr>
-                            <td class="player-cell">
-                                <img src="img/jugadores/j2.png" class="img-mini"> 
-                                Jugador 2
-                            </td>
-                            <td>Equipo 2</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td style="font-style: italic; color: #94a3b8;">Sin Valor Pendiente</td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
+            <p class="empty-message">No hay registros</p>
         </div>
 
     </main>
