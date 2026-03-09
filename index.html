@@ -87,6 +87,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+         /* Responsividad para móviles */
+        @media (max-width: 992px) { .grid-equipos { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { 
+            .grid-equipos { grid-template-columns: 1fr; }
+            header { padding: 20px; flex-direction: column; gap: 15px; }
+            nav { margin-right: 0; }
+        }
     </style>
 </head>
 <body>
