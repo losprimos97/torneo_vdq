@@ -161,6 +161,31 @@
                 </div>
             </div>
             </div>
+
+         <div class="grid-equipos">
+            <div class="card" onclick="abrirModal('Los Primos')">
+                <div class="card-header">Los Primos <span>👥</span></div>
+                <div class="card-body">
+                    <img src="img/equipos/equipo2.png" alt="Logo" class="team-logo">
+                    <div class="team-info">
+                        <p>Abreviatura: <span>CLP</span></p>
+                        <p>Dirigente: <span>Jhonny Aguaisa</span></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="grid-equipos">
+            <div class="card" onclick="abrirModal('Los Primos')">
+                <div class="card-header">Fénix <span>👥</span></div>
+                <div class="card-body">
+                    <img src="img/equipos/equipo3.png" alt="Logo" class="team-logo">
+                    <div class="team-info">
+                        <p>Abreviatura: <span>CDF</span></p>
+                        <p>Dirigente: <span>Nombre Apellido</span></p>
+                    </div>
+                </div>
+            </div>
+            </div>
     </main>
 
     <div id="miModal" class="modal">
@@ -187,7 +212,7 @@
         /* --- 2. AQUÍ TODO EL JAVASCRIPT JUGADORES--- */
         function abrirModal(nombreEquipo) {
             document.getElementById("miModal").style.display = "block";
-            document.getElementById("modal-titulo").innerText = "Jugadores: " + nombreEquipo;
+            document.getElementById("modal-titulo").innerText = "Lista de Jugadores";
             
             const lista = document.getElementById("lista-jugadores");
             // Aquí puedes personalizar los jugadores por equipo más adelante
