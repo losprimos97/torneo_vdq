@@ -148,24 +148,13 @@
             margin-bottom: 15px;
         }
 
-        /* Sub-acordeón para Semanas */
-        .sub-accordion {
-            background-color: #1a253d;
-            color: #60a5fa;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 6px;
-            font-size: 14px;
+        /* Mensaje de vacío */
+        .empty-message {
+            padding: 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-style: italic;
         }
-
-        /* --- TABLAS --- */
-        .table-container { overflow-x: auto; padding-bottom: 15px; }
-        table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        th { background-color: #1e3a8a; color: #60a5fa; padding: 12px; border: 1px solid #1a253d; }
-        td { padding: 12px; text-align: center; border-bottom: 1px solid #1a253d; }
-        
-        .match-display { display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .team-logo-mini { width: 25px; height: 25px; object-fit: contain; }
 
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 20px; gap: 15px; }
@@ -187,7 +176,7 @@
     </header>
 
     <main class="container">
-        <h1 class="main-title">🏆Copa Virgen del Quinche🏆</h1>
+        <h1 class="main-title">INICIO</h1>
 
         <section class="welcome-box">
             <p>"¡Bienvenidos al Torneo Benéfico VDQ! Organizado por el Club Los Primos, priostes de la Virgen del Quinche 2026. Disfruta de una jornada llena de deporte, familia y tradición en la Liga El Ejido. ¡Tu apoyo hace posible nuestra fiesta!"</p>
@@ -201,138 +190,26 @@
 
         <button class="accordion">📅 Horarios</button>
         <div class="panel">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Partido</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sábado 14 de Marzo</td>
-                            <td><strong>12:00</strong></td>
-                            <td>
-                                <div class="match-display">
-                                    <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 
-                                    vs 
-                                    EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sábado 14 de Marzo</td>
-                            <td><strong>13:00</strong></td>
-                            <td>
-                                <div class="match-display">
-                                    <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ3 
-                                    vs 
-                                    EQ4 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <p class="empty-message">Aún no se han asignado horarios</p>
         </div>
 
         <button class="accordion">📝 Resultados</button>
         <div class="panel">
-            
-            <button class="accordion sub-accordion">Semana 1 (14 de Marzo)</button>
-            <div class="panel">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Partido</th>
-                                <th>Resultado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sábado 14 de Marzo</td>
-                                <td>
-                                    <div class="match-display">
-                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 vs EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                    </div>
-                                </td>
-                                <td><strong>0 - 0</strong></td>
-                            </tr>
-                             <tr>
-                                <td>Sábado 14 de Marzo</td>
-                                <td>
-                                    <div class="match-display">
-                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ3 vs EQ4 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                    </div>
-                                </td>
-                                <td><strong>0 - 0</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <button class="accordion sub-accordion">Semana 2 (21 de Marzo)</button>
-            <div class="panel">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Partido</th>
-                                <th>Resultado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sábado 21 de Marzo</td>
-                                <td>
-                                    <div class="match-display">
-                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 vs EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                    </div>
-                                </td>
-                                <td><strong>0 - 0</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Sábado 21 de Marzo</td>
-                                <td>
-                                    <div class="match-display">
-                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ3 vs EQ4 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                    </div>
-                                </td>
-                                <td><strong>0 - 0</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
+            <p class="empty-message">Sin registros de partidos</p>
         </div>
 
     </main>
 
     <script>
-        // Lógica universal para acordeones (funciona con principales y sub-acordeones)
         const acc = document.getElementsByClassName("accordion");
         for (let i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function(e) {
-                e.stopPropagation(); // Evita conflictos entre acordeones anidados
+            acc[i].addEventListener("click", function() {
                 this.classList.toggle("active-acc");
                 const panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";
-                    
-                    // Ajuste para el acordeón padre: si abrimos un hijo, el padre debe crecer
-                    let parentPanel = this.parentElement.closest('.panel');
-                    if(parentPanel) {
-                        parentPanel.style.maxHeight = (parentPanel.scrollHeight + panel.scrollHeight) + "px";
-                    }
                 } 
             });
         }
