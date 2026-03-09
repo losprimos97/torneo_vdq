@@ -115,8 +115,41 @@
         <section id="equipos">
             <h1 class="main-title">EQUIPOS</h1>
             
-            <p style="text-align: center; color: #666;">(Aquí aparecerán las tarjetas de los equipos)</p>
+            <p style="text-align: center; color: #666;"></p>
         </section>
+        <div class="grid-equipos">
+    <div class="card" onclick="abrirModal('Los Sobrinos')">
+        <div class="card-header">Los Sobrinos de Sesar Quinteros <span class="icon">👥</span></div>
+        <div class="card-body">
+            <img src="logo.png" alt="Logo" class="team-logo">
+            <div class="team-info">
+                <p>Abreviatura: <span>SSQ</span></p>
+                <p>Dirigente: <span>Patricio Haro</span></p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div id="miModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2 id="modal-titulo">Jugadores del Equipo</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Número</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-jugadores">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
     </main>
 
