@@ -1,295 +1,130 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Torneo VDQ</title>
-
     <style>
-
         /* Reset y configuración base */
-
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-
         }
-
-
-
         html {
-
             scroll-behavior: smooth; /* Para que al navegar se deslice suavemente */
-
         }
-
-
-
         body {
-
             background-color: #050a18; /* Azul muy oscuro de fondo */
-
             color: white;
-
         }
-
-
-
         /* --- ESTILOS DEL ENCABEZADO --- */
-
         header {
-
             display: flex;
-
             align-items: center;
-
             padding: 20px 50px;
-
             background-color: #050a18;
-
             position: sticky; /* Se queda fijo arriba al bajar */
-
             top: 0;
-
             z-index: 1000;
-
         }
-
-
-
         .logo {
-
             flex: 0 1 auto;
-
         }
-
-
-
         .logo img {
-
             height: 50px; /* Ajusta según el tamaño de tu logo.png */
-
             display: block;
-
         }
-
-
-
         nav {
-
             flex: 1;
-
             display: flex;
-
             justify-content: center;
-
             margin-right: 100px; /* Equilibra visualmente el espacio del logo */
-
         }
-
-
-
         nav ul {
-
             list-style: none;
-
             display: flex;
-
             gap: 15px;
-
         }
-
-
-
         nav ul li a {
-
             text-decoration: none;
-
             color: #ffffff;
-
             font-size: 15px;
-
             font-weight: 500;
-
             padding: 8px 20px;
-
             transition: 0.3s;
-
         }
-
-
-
         /* Clase para el botón resaltado (Equipos) */
-
         nav ul li a.active {
-
             background-color: #1a253d;
-
             color: #f1c40f; 
-
             border-radius: 6px;
-
         }
-
-
-
         nav ul li a:hover:not(.active) {
-
             color: #f1c40f;
-
         }
-
-
-
         /* --- CONTENIDO PRINCIPAL --- */
-
         .container {
-
             max-width: 1200px;
-
             margin: 0 auto;
-
             padding: 20px;
-
         }
-
-
-
         /* Estilo para el título EQUIPOS */
-
         .main-title {
-
             text-align: center;
-
             font-size: 32px; /* Tamaño grande como en la imagen */
-
             font-weight: 500;
-
             margin-top: 0px;
-
             margin-bottom: 10px;
-
             letter-spacing: 1px;
-
             text-transform: uppercase;
-
         }
-
     </style>
-
 </head>
-
 <body>
-
-
-
     <header>
-
         <div class="logo">
-
             <img src="logo.png" alt="LP">
-
         </div>
-
-
-
         <nav>
-
             <ul>
-
                 <li><a href="index.html">Inicio</a></li>
-
                 <li><a href="torneo.html">Torneo</a></li>
-
                 <li><a href="equipos.html" class="active">Equipos</a></li>
-
             </ul>
-
         </nav>
-
     </header>
-
-
-
     <main class="container">
-
-        
-
         <section id="equipos">
-
             <h1 class="main-title">EQUIPOS</h1>
-
-            
-
             <p style="text-align: center; color: #666;"></p>
-
         </section>
-
         <div class="grid-equipos">
-
     <div class="card" onclick="abrirModal('Los Sobrinos')">
-
         <div class="card-header">Los Sobrinos de Sesar Quinteros <span class="icon">👥</span></div>
-
         <div class="card-body">
-
-            <img src="logo.png" alt="Logo" class="team-logo">
-
+            <img src="img/equipos/equipo1.png" alt="Logo" class="team-logo">
             <div class="team-info">
-
                 <p>Abreviatura: <span>SSQ</span></p>
-
                 <p>Dirigente: <span>Patricio Haro</span></p>
-
             </div>
-
         </div>
-
     </div>
-
     </div>
-
-
-
 <div id="miModal" class="modal">
-
     <div class="modal-content">
-
         <span class="close" onclick="cerrarModal()">&times;</span>
-
         <h2 id="modal-titulo">Jugadores del Equipo</h2>
-
         <div class="table-container">
-
             <table>
-
                 <thead>
-
                     <tr>
-
                         <th>Foto</th>
-
                         <th>Nombre</th>
-
                         <th>Edad</th>
-
                         <th>Número</th>
-
                     </tr>
-
                 </thead>
-
                 <tbody id="lista-jugadores">
-
                     </tbody>
