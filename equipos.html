@@ -182,8 +182,8 @@
         </div>
     </div>
 
+      /* --- 2. AQUÍ TODO EL JAVASCRIPT JUGADORES--- */
     <script>
-        /* --- 2. PEGA AQUÍ TODO EL JAVASCRIPT --- */
         function abrirModal(nombreEquipo) {
             document.getElementById("miModal").style.display = "block";
             document.getElementById("modal-titulo").innerText = "Jugadores: " + nombreEquipo;
@@ -198,6 +198,16 @@
                     <td>25</td>
                 </tr>
             `;
+            /*----AÑADIR JUGADOR------*/
+            `
+            <tr>
+                    <td><img src="img/jugadores/denis.jpg" class="img-jugador"></td>
+                    <td>Denis Aguaisa</td>
+                    <td>23</td>
+                    <td>12</td>
+                </tr>
+            `;
+            /*-----FIN AÑADIR JUGADOR------*/
         }
 
         function cerrarModal() {
