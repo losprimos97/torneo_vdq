@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo VDQ</title>
+    <title>Torneo VDQ - Inicio</title>
     <style>
         /* Reset y configuración base */
         * {
@@ -14,12 +14,12 @@
         }
 
         body {
-            background-color: #050a18; /* Azul muy oscuro de fondo */
+            background-color: #050a18;
             color: white;
             line-height: 1.6;
         }
 
-        /* --- ESTILOS DEL ENCABEZADO --- */
+        /* --- ENCABEZADO --- */
         header {
             display: flex;
             align-items: center;
@@ -30,20 +30,13 @@
             z-index: 1000;
         }
 
-        .logo {
-            flex: 0 1 auto;
-        }
-
-        .logo img {
-            height: 50px; /* Ajusta según el tamaño de tu logo.png */
-            display: block;
-        }
+        .logo img { height: 50px; display: block; }
 
         nav {
             flex: 1;
             display: flex;
             justify-content: center;
-            margin-right: 100px; /* Equilibra visualmente el espacio del logo */
+            margin-right: 100px;
         }
 
         nav ul {
@@ -61,16 +54,13 @@
             transition: 0.3s;
         }
 
-        /* Clase para el botón resaltado (Equipos) */
         nav ul li a.active {
             background-color: #1a253d;
             color: #f1c40f; 
             border-radius: 6px;
         }
 
-        nav ul li a:hover:not(.active) {
-            color: #f1c40f;
-        }
+        nav ul li a:hover:not(.active) { color: #f1c40f; }
 
         /* --- CONTENIDO PRINCIPAL --- */
         .container {
@@ -79,7 +69,6 @@
             padding: 20px;
         }
 
-        /* Estilo para el título EQUIPOS */
         .main-title {
             text-align: center;
             font-size: 32px;
@@ -87,22 +76,105 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-         /* Responsividad para móviles */
-        @media (max-width: 992px) { .grid-equipos { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { 
-            .grid-equipos { grid-template-columns: 1fr; }
+
+        /* --- SECCIÓN REGLAMENTO --- */
+        .reglamento-box {
+            background-color: #0d1b3e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #1a253d;
+        }
+        
+        .reglamento-box h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #f1c40f;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* --- ESTILOS DEL ACORDEÓN --- */
+        .accordion {
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+            padding: 15px 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .accordion:hover, .active-acc { background-color: #1d4ed8; }
+
+        .panel {
+            padding: 0 15px;
+            background-color: #0d1b3e;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 15px;
+        }
+
+        /* --- ESTILOS DE TABLAS --- */
+        .table-container { overflow-x: auto; padding: 15px 0; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+        th {
+            background-color: #1e3a8a;
+            color: #60a5fa;
+            padding: 12px;
+            border: 1px solid #1a253d;
+            text-align: center;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #1a253d;
+        }
+
+        /* Estilo para Nombres con Logos */
+        .match-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .team-logo-mini {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 992px) {
             header { padding: 20px; flex-direction: column; gap: 15px; }
             nav { margin-right: 0; }
+            .pdf-viewer { height: 350px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <img src="img/logo.png" alt="LP">
-        </div>
-
+        <div class="logo"><img src="img/logo.png" alt="LP"></div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Inicio</a></li>
@@ -113,14 +185,84 @@
     </header>
 
     <main class="container">
-        
-        <section id="inicio">
-            <h1 class="main-title">INICIO</h1>
-            
-            <p style="text-align: center; color: #666;">(Aquí aparecerán las tarjetas de los equipos)</p>
+        <h1 class="main-title">INICIO</h1>
+
+        <section class="reglamento-box">
+            <h2>📜 Reglamento del Torneo</h2>
+            <iframe src="reglamento.pdf" class="pdf-viewer"></iframe>
         </section>
 
+        <button class="accordion">📅 Horarios</button>
+        <div class="panel">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Partido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Martes 13 de Enero</td>
+                            <td>
+                                <div class="match-display">
+                                    <img src="img/equipos/cor.png" class="team-logo-mini"> COR 
+                                    vs 
+                                    SSQ <img src="img/equipos/ssq.png" class="team-logo-mini">
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="accordion">📝 Resultados</button>
+        <div class="panel">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Partido</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Martes 11 de Noviembre</td>
+                            <td>
+                                <div class="match-display">
+                                    <img src="img/equipos/bfc.png" class="team-logo-mini"> BFC 
+                                    vs 
+                                    LVS FC <img src="img/equipos/lvs.png" class="team-logo-mini">
+                                </div>
+                            </td>
+                            <td><strong>3 - 1</strong></td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
     </main>
+
+    <script>
+        // Lógica para abrir/cerrar secciones desplegables
+        const acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active-acc");
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
 
 </body>
 </html>
