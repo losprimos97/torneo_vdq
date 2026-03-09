@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo VDQ</title>
+    <title>Torneo VDQ - Equipos</title>
     <style>
-        /* --- 1. PEGA AQUÍ TODO EL CSS --- */
+        /* --- ESTILOS GENERALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +16,10 @@
         body {
             background-color: #050a18;
             color: white;
+            line-height: 1.6;
         }
 
-        /* Encabezado */
+        /* --- ENCABEZADO --- */
         header {
             display: flex;
             align-items: center;
@@ -47,6 +48,8 @@
         nav ul li a {
             text-decoration: none;
             color: #ffffff;
+            font-size: 15px;
+            font-weight: 500;
             padding: 8px 20px;
             transition: 0.3s;
         }
@@ -57,11 +60,23 @@
             border-radius: 6px;
         }
 
-        /* Grid de Equipos */
+        nav ul li a:hover:not(.active) { color: #f1c40f; }
+
+        /* --- TÍTULO Y CONTENEDOR --- */
+        .main-title {
+            text-align: center;
+            font-size: 32px;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- MATRIZ DE EQUIPOS (3x3) --- */
         .grid-equipos {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            /* Fuerza 3 columnas iguales */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -73,14 +88,18 @@
             cursor: pointer;
             border: 1px solid #1a253d;
             overflow: hidden;
+            transition: transform 0.3s ease;
         }
+
+        .card:hover { transform: translateY(-5px); border-color: #2563eb; }
 
         .card-header {
             background-color: #2563eb;
-            padding: 10px;
+            padding: 10px 15px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
+            font-size: 14px;
         }
 
         .card-body {
@@ -90,45 +109,64 @@
             gap: 15px;
         }
 
-        /* Tamaño corregido del logo del equipo */
+        /* Tamaño controlado del logo */
         .team-logo {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
             background: white;
-            border-radius: 4px;
+            border-radius: 5px;
+            padding: 3px;
         }
 
-        /* Ventana Emergente (Modal) */
+        .team-info p { font-size: 14px; color: #ccc; }
+        .team-info span { font-weight: bold; color: white; }
+
+        /* --- VENTANA EMERGENTE (MODAL) --- */
         .modal {
             display: none;
             position: fixed;
             z-index: 2000;
             left: 0; top: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
         }
 
         .modal-content {
             background-color: white;
             margin: 5% auto;
-            padding: 20px;
+            padding: 25px;
             width: 90%;
-            max-width: 500px;
+            max-width: 550px;
             border-radius: 12px;
             color: #333;
             position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .close {
             position: absolute; right: 20px; top: 10px;
-            font-size: 30px; cursor: pointer;
+            font-size: 30px; cursor: pointer; color: #666;
         }
 
+        /* Tabla de Jugadores */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th { background: #2563eb; color: white; padding: 10px; text-align: left; }
-        td { padding: 10px; border-bottom: 1px solid #ddd; }
-        .img-jugador { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        th { background: #2563eb; color: white; padding: 12px; text-align: left; font-size: 14px; }
+        td { padding: 10px; border-bottom: 1px solid #eee; font-size: 14px; vertical-align: middle; }
+        .img-jugador { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+
+        /* Responsividad para móviles */
+        @media (max-width: 992px) { .grid-equipos { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { 
+            .grid-equipos { grid-template-columns: 1fr; }
+            header { padding: 20px; flex-direction: column; gap: 15px; }
+            nav { margin-right: 0; }
+        }
     </style>
 </head>
 <body>
@@ -147,7 +185,7 @@
     </header>
 
     <main>
-        <h1 style="text-align: center; margin: 20px 0; font-size: 32px;">EQUIPOS</h1>
+        <h1 class="main-title">EQUIPOS</h1>
 
         <div class="grid-equipos">
             <div class="card" onclick="abrirModal('Los Sobrinos')">
@@ -160,38 +198,35 @@
                     </div>
                 </div>
             </div>
-            </div>
 
-         <div class="grid-equipos">
-            <div class="card" onclick="abrirModal('Los Primos')">
-                <div class="card-header">Los Primos <span>👥</span></div>
+            <div class="card" onclick="abrirModal('Corinthians')">
+                <div class="card-header">Corinthians Engineering FC <span>👥</span></div>
                 <div class="card-body">
                     <img src="img/equipos/equipo2.png" alt="Logo" class="team-logo">
                     <div class="team-info">
-                        <p>Abreviatura: <span>CLP</span></p>
-                        <p>Dirigente: <span>Jhonny Aguaisa</span></p>
+                        <p>Abreviatura: <span>COR</span></p>
+                        <p>Dirigente: <span>Erick Alencastro</span></p>
                     </div>
                 </div>
             </div>
-            </div>
-        <div class="grid-equipos">
-            <div class="card" onclick="abrirModal('Los Primos')">
-                <div class="card-header">Fénix <span>👥</span></div>
+
+            <div class="card" onclick="abrirModal('Byte FC')">
+                <div class="card-header">BYTE FC <span>👥</span></div>
                 <div class="card-body">
                     <img src="img/equipos/equipo3.png" alt="Logo" class="team-logo">
                     <div class="team-info">
-                        <p>Abreviatura: <span>CDF</span></p>
-                        <p>Dirigente: <span>Nombre Apellido</span></p>
+                        <p>Abreviatura: <span>BFC</span></p>
+                        <p>Dirigente: <span>John Campoverde</span></p>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </main>
 
     <div id="miModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
-            <h2 id="modal-titulo">Jugadores del Equipo</h2>
+            <h2 id="modal-titulo" style="border-bottom: 2px solid #2563eb; padding-bottom: 10px;">Jugadores</h2>
             <table>
                 <thead>
                     <tr>
@@ -207,35 +242,55 @@
         </div>
     </div>
 
-    
     <script>
-        /* --- 2. AQUÍ TODO EL JAVASCRIPT JUGADORES--- */
-        function abrirModal(nombreEquipo) {
-            document.getElementById("miModal").style.display = "block";
-            document.getElementById("modal-titulo").innerText = "Lista de Jugadores";
-            
+        // BASE DE DATOS DE JUGADORES
+        const datosEquipos = {
+            'Los Sobrinos': [
+                { foto: 'jugador1.png', nombre: 'Marlon Yajamin', edad: 22, numero: 25 },
+                { foto: 'jugador2.png', nombre: 'Nixon Cali', edad: 24, numero: 10 }
+            ],
+            'Corinthians': [
+                { foto: 'jugador3.png', nombre: 'Erick Alencastro', edad: 25, numero: 7 },
+                { foto: 'jugador4.png', nombre: 'Juan Pérez', edad: 23, numero: 5 }
+            ],
+            'Byte FC': [
+                { foto: 'jugador5.png', nombre: 'John Campoverde', edad: 30, numero: 1 }
+            ]
+        };
+
+        function abrirModal(nombreKey) {
+            const modal = document.getElementById("miModal");
             const lista = document.getElementById("lista-jugadores");
-            // Aquí puedes personalizar los jugadores por equipo más adelante
-            lista.innerHTML = `
-                <tr>
-                    <td><img src="img/jugadores/denis.jpg" class="img-jugador"></td>
-                    <td>Marlon Yajamin</td>
-                    <td>22</td>
-                    <td>25</td>
-                </tr>
-            <tr>
-                    <td><img src="img/jugadores/denis.jpg" class="img-jugador"></td>
-                    <td>Denis Aguaisa</td>
-                    <td>23</td>
-                    <td>12</td>
-                </tr>
-            `;
+            const titulo = document.getElementById("modal-titulo");
+
+            titulo.innerText = "Lista de Jugadores";
+            modal.style.display = "block";
+            
+            lista.innerHTML = ""; // Limpiar tabla
+
+            const jugadores = datosEquipos[nombreKey];
+
+            if (jugadores) {
+                jugadores.forEach(j => {
+                    lista.innerHTML += `
+                        <tr>
+                            <td><img src="img/jugadores/${j.foto}" class="img-jugador"></td>
+                            <td>${j.nombre}</td>
+                            <td>${j.edad}</td>
+                            <td>${j.numero}</td>
+                        </tr>
+                    `;
+                });
+            } else {
+                lista.innerHTML = "<tr><td colspan='4' style='text-align:center'>No hay jugadores registrados</td></tr>";
+            }
         }
 
         function cerrarModal() {
             document.getElementById("miModal").style.display = "none";
         }
 
+        // Cerrar al hacer clic fuera
         window.onclick = function(event) {
             if (event.target == document.getElementById("miModal")) {
                 cerrarModal();
