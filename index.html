@@ -60,8 +60,6 @@
             border-radius: 6px;
         }
 
-        nav ul li a:hover:not(.active) { color: #f1c40f; }
-
         /* --- CONTENIDO PRINCIPAL --- */
         .container {
             max-width: 1200px;
@@ -77,12 +75,27 @@
             letter-spacing: 2px;
         }
 
+        /* --- BIENVENIDA --- */
+        .welcome-box {
+            background-color: #0d1b3e;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #2563eb;
+            margin-bottom: 30px;
+        }
+
+        .welcome-box p {
+            font-size: 18px;
+            color: #f1f5f9;
+            font-style: italic;
+        }
+
         /* --- BOTÓN REGLAMENTO --- */
         .reglamento-container {
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
-            margin-top: 10px;
         }
 
         .btn-reglamento {
@@ -97,17 +110,15 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            font-size: 16px;
         }
 
         .btn-reglamento:hover {
             background-color: #2563eb;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
         }
 
-        /* --- ESTILOS DEL ACORDEÓN --- */
+        /* --- ACORDEÓN --- */
         .accordion {
             background-color: #2563eb;
             color: white;
@@ -137,42 +148,27 @@
             margin-bottom: 15px;
         }
 
-        /* --- ESTILOS DE TABLAS --- */
-        .table-container { overflow-x: auto; padding: 15px 0; }
-
-        table { width: 100%; border-collapse: collapse; font-size: 14px; }
-
-        th {
-            background-color: #1e3a8a;
+        /* Sub-acordeón para Semanas */
+        .sub-accordion {
+            background-color: #1a253d;
             color: #60a5fa;
             padding: 12px;
-            border: 1px solid #1a253d;
-            text-align: center;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-size: 14px;
         }
 
-        td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #1a253d;
-        }
+        /* --- TABLAS --- */
+        .table-container { overflow-x: auto; padding-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th { background-color: #1e3a8a; color: #60a5fa; padding: 12px; border: 1px solid #1a253d; }
+        td { padding: 12px; text-align: center; border-bottom: 1px solid #1a253d; }
+        
+        .match-display { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .team-logo-mini { width: 25px; height: 25px; object-fit: contain; }
 
-        /* Estilo para Nombres con Logos */
-        .match-display {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .team-logo-mini {
-            width: 25px;
-            height: 25px;
-            object-fit: contain;
-        }
-
-        /* Responsividad para móviles */
-        @media (max-width: 992px) {
-            header { padding: 20px; flex-direction: column; gap: 15px; }
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 20px; gap: 15px; }
             nav { margin-right: 0; }
         }
     </style>
@@ -191,7 +187,11 @@
     </header>
 
     <main class="container">
-        <h1 class="main-title">INICIO</h1>
+        <h1 class="main-title">🏆Copa Virgen del Quinche🏆</h1>
+
+        <section class="welcome-box">
+            <p>"¡Bienvenidos al Torneo Benéfico VDQ! Organizado por el Club Los Primos, priostes de la Virgen del Quinche 2026. Disfruta de una jornada llena de deporte, familia y tradición en la Liga El Ejido. ¡Tu apoyo hace posible nuestra fiesta!"</p>
+        </section>
 
         <section class="reglamento-container">
             <a href="reglamento.pdf" target="_blank" class="btn-reglamento">
@@ -212,13 +212,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Sábado 21 de Marzo</td>
+                            <td>Sábado 14 de Marzo</td>
                             <td><strong>12:00</strong></td>
                             <td>
                                 <div class="match-display">
-                                    <img src="img/equipos/equipo.png" class="team-logo-mini"> Equipo 1 
+                                    <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 
                                     vs 
-                                    Equipo 2 <img src="img/equipos/equipo.png" class="team-logo-mini">
+                                    EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
                                 </div>
                             </td>
                         </tr>
@@ -229,49 +229,102 @@
 
         <button class="accordion">📝 Resultados</button>
         <div class="panel">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Partido</th>
-                            <th>Resultado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sábado 21 de Marzo</td>
-                            <td>
-                                <div class="match-display">
-                                    <img src="img/equipos/equipo.png" class="team-logo-mini"> Equipo 1 
-                                    vs 
-                                    Equipo 2 <img src="img/equipos/equipo.png" class="team-logo-mini">
-                                </div>
-                            </td>
-                            <td><strong>0 - 0</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            
+            <button class="accordion sub-accordion">Semana 1 (14 de Marzo)</button>
+            <div class="panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Partido</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sábado 14 de Marzo</td>
+                                <td>
+                                    <div class="match-display">
+                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 vs EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
+                                    </div>
+                                </td>
+                                <td><strong>0 - 0</strong></td>
+                            </tr>
+                             <tr>
+                                <td>Sábado 14 de Marzo</td>
+                                <td>
+                                    <div class="match-display">
+                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ3 vs EQ4 <img src="img/equipos/equipo.png" class="team-logo-mini">
+                                    </div>
+                                </td>
+                                <td><strong>0 - 0</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <button class="accordion sub-accordion">Semana 2 (21 de Marzo)</button>
+            <div class="panel">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Partido</th>
+                                <th>Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sábado 21 de Marzo</td>
+                                <td>
+                                    <div class="match-display">
+                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ1 vs EQ2 <img src="img/equipos/equipo.png" class="team-logo-mini">
+                                    </div>
+                                </td>
+                                <td><strong>0 - 0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Sábado 21 de Marzo</td>
+                                <td>
+                                    <div class="match-display">
+                                        <img src="img/equipos/equipo.png" class="team-logo-mini"> EQ3 vs EQ4 <img src="img/equipos/equipo.png" class="team-logo-mini">
+                                    </div>
+                                </td>
+                                <td><strong>0 - 0</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
     </main>
 
     <script>
-        // Lógica para abrir/cerrar secciones desplegables
+        // Lógica universal para acordeones (funciona con principales y sub-acordeones)
         const acc = document.getElementsByClassName("accordion");
         for (let i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
+            acc[i].addEventListener("click", function(e) {
+                e.stopPropagation(); // Evita conflictos entre acordeones anidados
                 this.classList.toggle("active-acc");
                 const panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";
+                    
+                    // Ajuste para el acordeón padre: si abrimos un hijo, el padre debe crecer
+                    let parentPanel = this.parentElement.closest('.panel');
+                    if(parentPanel) {
+                        parentPanel.style.maxHeight = (parentPanel.scrollHeight + panel.scrollHeight) + "px";
+                    }
                 } 
             });
         }
     </script>
-
 </body>
 </html>
